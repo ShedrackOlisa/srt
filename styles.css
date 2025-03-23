@@ -175,7 +175,7 @@ nav ul li a {
   }
   
   .post h3 {
-    font-size: 20px;
+    font-size: 14px;
     margin: 15px;
   }
   
@@ -454,7 +454,7 @@ footer .footer-bottom {
 }
 
 .popular-posts .popular-post h3 {
-  font-size: 13px;
+  font-size: 12px;
   margin: 15px;
   color: #2c3e50;
 }
@@ -491,6 +491,10 @@ footer .footer-bottom {
 
   .popular-posts .posts-grid {
     grid-template-columns: 1fr; /* Single column on mobile */
+  }
+
+  .popular-posts .popular-post h3 {
+    font-size: 12px;
   }
 }
 
