@@ -121,7 +121,7 @@ nav ul li a {
   
   /* Hero Section */
   .hero {
-    background: url('https://thebmdmedia.com/img/bmd-img-37.webp') no-repeat center center/cover;
+    background: url('home-bg.webp') no-repeat center center/cover;
     color: #fff;
     text-align: center;
     padding: 100px 0;
@@ -569,8 +569,8 @@ footer .footer-bottom {
 }
 
 .next {
-  background-color: #ff6f61;
-  color: #fff;
+  /* background-color: #ff6f61; */
+  color: black;
   border-color: #ddd;
 }
 
