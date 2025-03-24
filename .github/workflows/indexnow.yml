@@ -1,0 +1,35 @@
+name: IndexNow Submission
+on:
+  push:
+    branches: [main] # Trigger on pushes to the "main" branch
+
+jobs:
+  submit-urls:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v42
+        with:
+          files: |
+            **/*.html
+            **/*.md
+
+      - name: Submit URLs to IndexNow
+        if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
+        run: |
+          # Format URLs (replace with your domain)
+          CHANGED_URLS=$(echo "${{ steps.changed-files.outputs.all_changed_files }}" | sed 's/^/https:\/\/yourdomain.com\//g' | tr '\n' ',' | sed 's/,$//')
+
+          # Submit via curl
+          curl -X POST "https://api.indexnow.org/IndexNow" \
+          -H "Content-Type: application/json; charset=utf-8" \
+          -d '{
+            "host": "yourdomain.com",
+            "key": "${{ secrets.INDEXNOW_KEY }}",
+            "keyLocation": "https://strongrelationshiptips.com//${{ secrets.INDEXNOW_KEY }}.txt",
+            "urlList": ['${CHANGED_URLS//,/\",\"}']
+          }'
